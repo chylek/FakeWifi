@@ -161,7 +161,7 @@ public class MainFragment extends Fragment {
             editor.putBoolean(pinfos.get(i).pname, app_list.isItemChecked(i));
         editor.putBoolean("master", this.masterSwitch.isChecked());
         editor.putBoolean("debug", this.debugSwitch.isChecked());
-        editor.commit(); // do not use apply, otherwise the Xposed module won't update its settings
+        editor.commit(); // do not use apply, otherwise the Xposed part of the module won't update its settings
 
     }
 

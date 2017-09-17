@@ -5,11 +5,15 @@
     <string name="long_about">Tato aplikace funguje pouze s Xposed frameworkem. Vytváří falešné objekty NetworkInfo a WifiManger tak, aby si určené aplikace myslely, že používají WiFi (místo jiného typu připojení, jako mobilní data nebo drátový internet).\n\nBuďte opatrní pokud nemáte neomezená data. Některé aplikace mohou např. zvýšit kvalitu přehrávání a tím i datové přenosy.\n\nPři změnách nastavení může být nutné dotčené aplikace násilně ukončit nebo restartovat vaše zařízení.\n\nTato aplikace vychází z kódu lemonsqueeze šířeného pod licencí GNU GPL v3. Také moje aplikace je pod touto licencí:  \n\nFake Wifi\nCopyright &#169; 2017 Adam Chýlek\n\nFake Wifi Connection - Make android apps believe Wifi is connected.\nCopyright &#169; 2014 lemonsqueeze\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;></string>
 
     <string name="master_switch">Hlavní vypínač</string>
+    <string name="master_switch_on">Aplikace je aktivní</string>
+    <string name="master_switch_off">Aplikace je neaktivní</string>
     <string name="debug">Ladění</string>
     <string name="intro">Vyber aplikace, které si mají myslet, že jsou na WiFi</string>
     <string name="select_all">Vybrat vše</string>
     <string name="select_none">Zrušit výběr</string>
     <string name="invert">Obrátit výběr</string>
     <string name="about">O aplikaci</string>
+    <string name="xposed_missing">Tato aplikace funguje pouze s Xposed framework. Na tomto zařízení patrně není nainstalován nebo není funkční.</string>
+    <string name="tasker_text">Jedinou věc kterou můžete změnit je zda je aplikace aktivní či nikoliv</string>
 
 </resources>

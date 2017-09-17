@@ -4,11 +4,15 @@
 
     <string name="long_about">This app works only with the Xposed framework.\nIt creates fake NetworkInfo and WifiManager objects that make other apps think they are using a WiFi even when your device is connected by other means to the internet.\n\nBe careful when you use it, especially if you don\'t have an unlimited data plan!\n\nYou might need to \'force close\' some apps to pick up new settings or even restart your device.\n\nThis app builds upon code from lemonsqueeze licenced under GNU GPL v3 and my app uses the same licence.\n\nFake Wifi\nCopyright &#169; 2017 Adam Chýlek\n\nFake Wifi Connection - Make android apps believe Wifi is connected.\nCopyright &#169; 2014 lemonsqueeze\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;></string>
     <string name="master_switch">Master Switch</string>
+    <string name="master_switch_on">App is enabled</string>
+    <string name="master_switch_off">App is disabled</string>
     <string name="debug">Debug</string>
     <string name="intro">Select apps that should believe they\'re on Wifi</string>
     <string name="select_all">Select all</string>
     <string name="select_none">Select none</string>
     <string name="invert">Invert</string>
     <string name="about">About</string>
+    <string name="xposed_missing">This app works only with Xposed framework. Your device does not appear to have it installed. Please install Xposed before using this app.</string>
+    <string name="tasker_text">The only thing you can change is whether the app is enabled or disabled</string>
 
 </resources>

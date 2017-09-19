@@ -57,7 +57,6 @@ public class XposedMain implements IXposedHookLoadPackage
 
   public void log_call(String s)
   {
-      boolean debug = isDebug();
       if (!isDebug())
 	  return;
 

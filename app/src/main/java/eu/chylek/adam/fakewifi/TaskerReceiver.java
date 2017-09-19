@@ -12,11 +12,12 @@ import android.content.SharedPreferences;
 public class TaskerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if ("com.twofortyfouram.locale.Intent.ACTION_FIRE_SETTING".equals(intent.getAction())){
+        if ("com.twofortyfouram.locale.intent.action.FIRE_SETTING".equals(intent.getAction())){
             boolean state = intent.getBundleExtra(TaskerEditActivity.EXTRA_BUNDLE).getBoolean(TaskerEditActivity.EXTRA_MASTER);
-            SharedPreferences.Editor editor = context.getSharedPreferences("pref", Context.MODE_WORLD_READABLE).edit();
+            SharedPreferences.Editor editor = context.getSharedPreferences("pref", Context.MODE_PRIVATE).edit();
             editor.putBoolean("master", state);
             editor.commit(); // do not use apply, otherwise the Xposed part of the module won't update its settings
+            MainFragment.fixPreferencePermission(context);
         }
     }
 }

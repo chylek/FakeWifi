@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_cat_apparams">
+
+        <EditTextPreference
+            android:key="ssid"
+            android:title="@string/title_ssid"
+            android:summary="@string/summary_ssid"
+            android:dialogTitle="@string/dialog_ssid" />
+
+        <EditTextPreference
+            android:key="bssid"
+            android:title="@string/title_bssid"
+            android:summary="@string/summary_bssid"
+            android:dialogTitle="@string/dialog_mac" />
+
+
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_cat_deviceparams">
+
+        <EditTextPreference
+            android:key="mac"
+            android:title="@string/title_mac"
+            android:summary="@string/summary_mac"
+            android:dialogTitle="@string/dialog_mac" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

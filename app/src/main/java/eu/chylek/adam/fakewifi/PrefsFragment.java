@@ -66,7 +66,7 @@ public class PrefsFragment extends PreferenceFragmentCompat implements SharedPre
             findPreference(PREF_BSSID).setSummary(R.string.summary_mac);
         }
         else {
-            findPreference(PREF_BSSID).setSummary(mac);
+            findPreference(PREF_BSSID).setSummary(bssid);
         }
         //check if SSID empty
         String ssid = sp.getString(PREF_SSID,"");
@@ -75,7 +75,7 @@ public class PrefsFragment extends PreferenceFragmentCompat implements SharedPre
             findPreference(PREF_SSID).setSummary(R.string.summary_ssid);
         }
         else {
-            findPreference(PREF_SSID).setSummary(mac);
+            findPreference(PREF_SSID).setSummary(ssid);
         }
     }
 

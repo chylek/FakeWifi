@@ -14,10 +14,10 @@ public class TaskerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if ("com.twofortyfouram.locale.intent.action.FIRE_SETTING".equals(intent.getAction())){
             boolean state = intent.getBundleExtra(TaskerEditActivity.EXTRA_BUNDLE).getBoolean(TaskerEditActivity.EXTRA_MASTER);
-            SharedPreferences.Editor editor = context.getSharedPreferences("pref", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = context.getSharedPreferences(Utils.PREFERENCE_NAME, Context.MODE_PRIVATE).edit();
             editor.putBoolean("master", state);
             editor.commit(); // do not use apply, otherwise the Xposed part of the module won't update its settings
-            MainFragment.fixPreferencePermission(context);
+            Utils.fixPreferencePermission(context);
         }
     }
 }

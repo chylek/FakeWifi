@@ -214,7 +214,7 @@ public class XposedMain implements IXposedHookLoadPackage
   public void handleLoadPackage(final LoadPackageParam lpp) throws Throwable
   {
       lpparam = lpp;
-      pref = new XSharedPreferences(XposedMain.class.getPackage().getName(), "pref");
+      pref = new XSharedPreferences(XposedMain.class.getPackage().getName(), Utils.PREFERENCE_NAME);
 
       if (!hack_enabled()) return;
 

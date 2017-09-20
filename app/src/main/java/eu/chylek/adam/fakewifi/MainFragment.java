@@ -42,7 +42,7 @@ public class MainFragment extends Fragment {
     }
 
     private void init(View view) {
-        pref = this.getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        pref = this.getContext().getSharedPreferences(Utils.PREFERENCE_NAME, Context.MODE_PRIVATE);
         app_list = view.findViewById(R.id.appList);
 
         pinfos = getInstalledApps(true);
@@ -162,23 +162,10 @@ public class MainFragment extends Fragment {
         editor.putBoolean("master", this.masterSwitch.isChecked());
         editor.putBoolean("debug", this.debugSwitch.isChecked());
         editor.commit(); // do not use apply, otherwise the Xposed part of the module won't update its settings
-        fixPreferencePermission(getActivity());
+        Utils.fixPreferencePermission(getActivity());
     }
 
-    /**
-     * workaround for android N and later - preference files have to be in MODE_PRIVATE
-     * so we need to override the permissions after each save so that Xposed part can read them.
-     *
-     * @param ctxt
-     */
-    public static void fixPreferencePermission(Context ctxt){
-        Log.d("PREFDIR",ctxt.getApplicationInfo().dataDir);
-        File prefsDir = new File(ctxt.getApplicationInfo().dataDir, "shared_prefs");
-        File prefsFile = new File(prefsDir, "pref.xml");
-        if (prefsFile.exists()) {
-            prefsFile.setReadable(true, false);
-        }
-    }
+
     //invert selected
     public void invert() {
         for (int i = 0; i < pinfos.size(); i++) {

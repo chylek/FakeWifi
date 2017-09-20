@@ -73,8 +73,16 @@ public class XposedMain implements IXposedHookLoadPackage
       // WifiSsid ssid = WifiSsid.createFromAsciiEncoded("FakeWifi");
 
       Class cls = XposedHelpers.findClass("android.net.wifi.WifiSsid", lpparam.classLoader);
-      Object wifissid = XposedHelpers.callStaticMethod(cls, "createFromAsciiEncoded", "FakeWifi");
+      Object wifissid = XposedHelpers.callStaticMethod(cls, "createFromAsciiEncoded", getPrefString(PrefsFragment.PREF_SSID,"FakeWifi"));
       return wifissid;
+  }
+
+  public String getPrefString(String key, String defaultvalue){
+      String res = pref.getString(key,defaultvalue);
+      if (res.equals("")) {
+          return defaultvalue;
+      }
+      return res;
   }
 
   public WifiInfo createWifiInfo() throws Exception
@@ -89,8 +97,8 @@ public class XposedMain implements IXposedHookLoadPackage
       InetAddress addr = (ip != null ? ip.addr : null);
       XposedHelpers.setIntField(info, "mNetworkId", 1);
       XposedHelpers.setObjectField(info, "mSupplicantState", SupplicantState.COMPLETED);
-      XposedHelpers.setObjectField(info, "mBSSID", "66:55:44:33:22:11");
-      XposedHelpers.setObjectField(info, "mMacAddress", "11:22:33:44:55:66");
+      XposedHelpers.setObjectField(info, "mBSSID", getPrefString(PrefsFragment.PREF_BSSID,"66:55:44:33:22:11"));
+      XposedHelpers.setObjectField(info, "mMacAddress", getPrefString(PrefsFragment.PREF_MAC,"11:22:33:44:55:66"));
       XposedHelpers.setObjectField(info, "mIpAddress", addr);
       XposedHelpers.setIntField(info, "mLinkSpeed", 65);  // Mbps
       if (Build.VERSION.SDK_INT >= 21) XposedHelpers.setIntField(info, "mFrequency", 5000); // MHz
@@ -99,7 +107,7 @@ public class XposedMain implements IXposedHookLoadPackage
       try
       {  XposedHelpers.setObjectField(info, "mWifiSsid", createWifiSsid()); } // Kitkat
       catch (Error e)
-      {  XposedHelpers.setObjectField(info, "mSSID", "FakeWifi");  }	      // Jellybean
+      {  XposedHelpers.setObjectField(info, "mSSID", getPrefString(PrefsFragment.PREF_SSID,"FakeWifi"));  }	      // Jellybean
 
       return info;
   }

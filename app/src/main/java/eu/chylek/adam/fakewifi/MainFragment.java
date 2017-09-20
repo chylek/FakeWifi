@@ -72,7 +72,7 @@ public class MainFragment extends Fragment {
         masterSwitch = view.findViewById(R.id.masterswitch);
         masterSwitch.setChecked(pref.getBoolean("master", true));
         debugSwitch = view.findViewById(R.id.debugswitch);
-        debugSwitch.setChecked(pref.getBoolean("debug", true));
+        debugSwitch.setChecked(pref.getBoolean("debug", false));
     }
 
     @Override

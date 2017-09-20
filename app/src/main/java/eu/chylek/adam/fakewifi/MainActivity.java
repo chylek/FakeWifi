@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         Fragment newFragment;
-        if (isXposedInstallerAvailable(getApplicationContext())) {
+        if (BuildConfig.DEBUG||isXposedInstallerAvailable(getApplicationContext())) {
             newFragment = new MainFragment();
         } else {
             newFragment = new XposedMissingFragment();

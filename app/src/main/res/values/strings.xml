@@ -14,5 +14,13 @@
     <string name="about">About</string>
     <string name="xposed_missing">This app works only with Xposed framework. Your device does not appear to have it installed. Please install Xposed before using this app.</string>
     <string name="tasker_text">The only thing you can change is whether the app is enabled or disabled</string>
+    <string name="settings">Settings</string>
+    <string name="pref_cat_wifiparams">WiFi parameters</string>
+    <string name="title_ssid">Fake SSID name</string>
+    <string name="summary_ssid">Default value of FakeWifi is being used.</string>
+    <string name="dialog_ssid">Input desired SSID</string>
+    <string name="title_mac">BSSID (MAC of access point)</string>
+    <string name="summary_mac">Default MAC address is being used.</string>
+    <string name="dialog_mac">MAC (hexadecimal with colons AB:CD:EF:01:23:45)</string>
 
 </resources>

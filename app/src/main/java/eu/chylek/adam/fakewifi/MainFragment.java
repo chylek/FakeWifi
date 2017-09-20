@@ -121,6 +121,9 @@ public class MainFragment extends Fragment {
             case R.id.act_about:
                 about();
                 return true;
+            case R.id.act_settings:
+                settings();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -129,6 +132,17 @@ public class MainFragment extends Fragment {
 
     private void about() {
         Fragment newFragment = new AboutFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment, newFragment);
+        transaction.addToBackStack(null);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.commit();
+    }
+
+
+    private void settings() {
+        Fragment newFragment = new PrefsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment, newFragment);

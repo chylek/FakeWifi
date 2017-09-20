@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_cat_wifiparams">
+
+        <EditTextPreference
+            android:key="ssid"
+            android:title="@string/title_ssid"
+            android:summary="@string/summary_ssid"
+            android:dialogTitle="@string/dialog_ssid" />
+
+        <EditTextPreference
+            android:key="mac"
+            android:title="@string/title_mac"
+            android:summary="@string/summary_mac"
+            android:dialogTitle="@string/dialog_mac" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

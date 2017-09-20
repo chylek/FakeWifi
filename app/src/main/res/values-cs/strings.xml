@@ -15,5 +15,13 @@
     <string name="about">O aplikaci</string>
     <string name="xposed_missing">Tato aplikace funguje pouze s Xposed framework. Na tomto zařízení patrně není nainstalován nebo není funkční.</string>
     <string name="tasker_text">Jedinou věc kterou můžete změnit je zda je aplikace aktivní či nikoliv</string>
+    <string name="settings">Nastavení</string>
+    <string name="title_ssid">Falešné SSID</string>
+    <string name="dialog_ssid">Vložte požadované SSID</string>
+    <string name="dialog_mac">MAC (hexadecimální s dvojtečkami AB:CD:EF:01:23:45)</string>
+    <string name="summary_mac">Používám výchozí MAC adresu.</string>
+    <string name="summary_ssid">Používám výchozí hodnotu FakeWifi.</string>
+    <string name="title_mac">BSSID (MAC přístupového bodu)</string>
+    <string name="pref_cat_wifiparams">Parametry WiFi</string>
 
 </resources>

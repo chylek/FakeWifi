@@ -5,41 +5,34 @@
     android:orientation="vertical"
     tools:context="eu.chylek.adam.fakewifi.MainFragment">
 
-    <TextView android:textAppearance="?android:textAppearanceMedium"
+    <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="@string/intro" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro"
+        android:textAppearance="?android:textAppearanceMedium" />
 
-    <LinearLayout
-        android:id="@+id/ll"
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/masterswitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:text="@string/master_switch" />
 
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/debugswitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:text="@string/debug" />
 
-        <ToggleButton
-            android:id="@+id/masterswitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textOff="@string/master_switch"
-            android:textOn="@string/master_switch" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ToggleButton
-            android:id="@+id/debugswitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textOff="@string/debug"
-            android:textOn="@string/debug"/>
-
-
-    </LinearLayout>
 
     <ListView
         android:id="@+id/appList"

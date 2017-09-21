@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,8 +34,8 @@ public class MainFragment extends Fragment {
 
     SharedPreferences pref;
     ListView app_list;        //listview with checkboxes which will contain apps
-    ToggleButton masterSwitch;
-    ToggleButton debugSwitch;
+    SwitchCompat masterSwitch;
+    SwitchCompat debugSwitch;
 
     ArrayList<PInfo> pinfos;    //PInfo object for each app
 

@@ -36,7 +36,6 @@ Credits
 -------
 
 - rovo89 for awesome Xposed Framework
-- UI code by hamzahrmalik (Force Fast Scroll)
 - lemonsqueeze for [the original version of this app](https://github.com/lemonsqueeze/FakeWifiConnection/)
 
 Like the app?

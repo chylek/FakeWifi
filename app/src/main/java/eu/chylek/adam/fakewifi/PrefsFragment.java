@@ -25,11 +25,9 @@ public class PrefsFragment extends PreferenceFragmentCompat implements SharedPre
     }
 
     private class MacCheck implements Preference.OnPreferenceChangeListener{
-        final Pattern p = Pattern.compile("([0-9A-F]{2}:){5}[0-9A-F]{2}");
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            String newString = ((String) newValue).trim().toUpperCase();
-            boolean match = p.matcher(newString).matches() || newString.equals("");
+            boolean match = Utils.checkMacFormat((String) newValue);
             if (!match) {
                 Toast.makeText(getActivity(), R.string.wrong_mac, Toast.LENGTH_LONG).show();
             }

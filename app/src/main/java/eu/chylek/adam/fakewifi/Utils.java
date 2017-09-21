@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 /**
  * Created by chylek on 20.9.17.
@@ -11,6 +12,7 @@ import java.io.File;
 
 public class Utils {
     public static String PREFERENCE_NAME = "pref";
+    final static Pattern macMatcher = Pattern.compile("([0-9A-F]{2}:){5}[0-9A-F]{2}");
 
     /**
      * workaround for android N and later - preference files have to be in MODE_PRIVATE
@@ -25,5 +27,10 @@ public class Utils {
         if (prefsFile.exists()) {
             prefsFile.setReadable(true, false);
         }
+    }
+
+    public static boolean checkMacFormat(String s){
+        String newString = s.trim().toUpperCase();
+        return macMatcher.matcher(newString).matches() || newString.equals("");
     }
 }

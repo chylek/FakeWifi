@@ -3,6 +3,7 @@ package eu.chylek.adam.fakewifi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -46,7 +47,7 @@ public class MainFragment extends Fragment {
         pref = this.getContext().getSharedPreferences(Utils.PREFERENCE_NAME, Context.MODE_PRIVATE);
         app_list = view.findViewById(R.id.appList);
 
-        pinfos = getInstalledApps(true);
+        pinfos = getInstalledApps();
         //sort the pinfo objects by name
         Collections.sort(pinfos, new Comparator<PInfo>() {
             @Override
@@ -152,17 +153,16 @@ public class MainFragment extends Fragment {
         transaction.commit();
     }
 
-    public ArrayList<PInfo> getInstalledApps(boolean getSysPackages) {
+    public ArrayList<PInfo> getInstalledApps() {
         ArrayList<PInfo> res = new ArrayList<>();
 
-        Context context = getContext();
-        List<PackageInfo> packs = context.getPackageManager().getInstalledPackages(0);
+        PackageManager pm = getContext().getPackageManager();
+        List<PackageInfo> packs = pm.getInstalledPackages(0);
         for (int i = 0; i < packs.size(); i++) {
             PackageInfo p = packs.get(i);
-            if ((!getSysPackages) && (p.versionName == null))
-                continue;
             PInfo newInfo = new PInfo();
-            newInfo.appname = p.applicationInfo.loadLabel(context.getPackageManager()).toString();
+
+            newInfo.appname = p.applicationInfo.loadLabel(pm).toString();
             newInfo.pname = p.packageName;
             res.add(newInfo);
         }

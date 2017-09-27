@@ -36,7 +36,10 @@ Credits
 -------
 
 - rovo89 for awesome Xposed Framework
-- UI code by hamzahrmalik (Force Fast Scroll)
 - lemonsqueeze for [the original version of this app](https://github.com/lemonsqueeze/FakeWifiConnection/)
+
+Like the app?
+-------
+Spread the word on the interwebs, tell your friends or donate to bitcoin wallet: 16AhXUfdozHEmnmWuDyHXVr4peXdj21irg
 
 Released under [GNU GPL License](https://raw.github.com/chylek/FakeWifi/master/LICENSE).

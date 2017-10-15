@@ -37,6 +37,7 @@ Credits
 
 - rovo89 for awesome Xposed Framework
 - lemonsqueeze for [the original version of this app](https://github.com/lemonsqueeze/FakeWifiConnection/)
+- apsun for [Remote preferences](https://github.com/apsun/RemotePreferences)
 
 Like the app?
 -------

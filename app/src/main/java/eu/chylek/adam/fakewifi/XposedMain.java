@@ -1,5 +1,7 @@
 package eu.chylek.adam.fakewifi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
@@ -7,8 +9,18 @@ import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.StrictMode;
 import android.util.Log;
 
+import com.crossbowffs.remotepreferences.RemotePreferences;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Collections;
@@ -18,14 +30,19 @@ import java.util.regex.Pattern;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
+import static eu.chylek.adam.fakewifi.Utils.PREFERENCE_NAME;
+
 public class XposedMain implements IXposedHookLoadPackage
 {
-  private XSharedPreferences pref;
+  private SharedPreferences pref;
   private LoadPackageParam lpparam;
 
 
   private boolean isDebug()
   {
+      if (pref==null){
+          return true;
+      }
       return pref.getBoolean("debug", false);
   }
     // whether stack trace should be included in logs
@@ -217,14 +234,42 @@ public class XposedMain implements IXposedHookLoadPackage
       catch (NoSuchMethodError e)
       {   log("couldn't hook method " + methodName);   }
   }
+
   
   @Override
   public void handleLoadPackage(final LoadPackageParam lpp) throws Throwable
   {
       lpparam = lpp;
-      pref = new XSharedPreferences(XposedMain.class.getPackage().getName(), Utils.PREFERENCE_NAME);
+      // Strict mode could be upset when reading preferences, but we need them now
+      StrictMode.ThreadPolicy old = StrictMode.getThreadPolicy();
+      StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder(old)
+              .permitDiskReads()
+              .build());
 
-      if (!hack_enabled()) return;
+      if (lpparam.packageName.equals(XposedMain.class.getPackage().getName())) {
+          Log.d("FakeWifi", lpparam.packageName + " return");
+          return;
+      }
+
+      Context context = ContextUtils.getSystemContext();
+      if (null == context) {
+          Log.w("FakeWifi","null context");
+          return;
+      }
+
+      if (android.os.Build.VERSION.SDK_INT>23){
+          // we need content provider to access preferences because of strict permissions on Nougat.
+          pref = new RemotePreferences(context, Utils.PREFERENCE_AUTHORITY, Utils.PREFERENCE_NAME);
+      }
+      else {
+          pref = new XSharedPreferences(XposedMain.class.getPackage().getName(), PREFERENCE_NAME);
+      }
+
+
+      if (!hack_enabled())
+      {
+          return;
+      }
 
       // --------------------------
       // following android.net.NetworkInfo hooks change every NetworkInfo sent to the app.

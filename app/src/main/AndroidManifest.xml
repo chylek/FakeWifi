@@ -60,7 +60,10 @@
                 <action android:name="com.twofortyfouram.locale.intent.action.FIRE_SETTING" />
             </intent-filter>
         </receiver>
-
+        <provider
+            android:name=".XposedPreferenceProvider"
+            android:authorities="eu.chylek.adam.fakewifi"
+            android:exported="true"/>
 
         <meta-data
             android:name="xposedmodule"

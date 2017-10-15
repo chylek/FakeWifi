@@ -40,6 +40,9 @@ public class XposedMain implements IXposedHookLoadPackage
 
   private boolean isDebug()
   {
+      if (pref==null){
+          return true;
+      }
       return pref.getBoolean("debug", false);
   }
     // whether stack trace should be included in logs
@@ -51,7 +54,6 @@ public class XposedMain implements IXposedHookLoadPackage
 
   public boolean hack_enabled()
   {
-      log("in pref: "+Boolean.toString(pref.contains(lpparam.packageName)));
       boolean master_switch = pref.getBoolean("master", true);
       boolean app_enabled = pref.getBoolean(lpparam.packageName, false);
       return (master_switch && app_enabled);
@@ -64,16 +66,16 @@ public class XposedMain implements IXposedHookLoadPackage
 
   public void log(String s)
   {
-//      if (!isDebug()) {
-//          return;
-//      }
+      if (!isDebug()) {
+          return;
+      }
       Log.d("FakeWifi", lpparam.packageName + " " + s);
   }
 
   public void log_call(String s)
   {
-//      if (!isDebug())
-//	  return;
+      if (!isDebug())
+	  return;
 
       Log.d("FakeWifi", lpparam.packageName + " " + s);
       
@@ -233,64 +235,17 @@ public class XposedMain implements IXposedHookLoadPackage
       {   log("couldn't hook method " + methodName);   }
   }
 
-  private JSONObject nougat(){
-      JSONObject result = null;
-      File prefsFile = new File("/data/data/eu.chylek.adam.fakewifi/shared_prefs", PREFERENCE_NAME + ".json");
-
-
-      BufferedReader br = null;
-      FileReader fr = null;
-
-      try {
-          fr = new FileReader(prefsFile);
-          br = new BufferedReader(fr);
-          StringBuilder sb = new StringBuilder();
-
-          String line = null;
-          while ((line = br.readLine()) != null)
-          {
-              sb.append(line);
-          }
-          result = new JSONObject(sb.toString());
-
-          System.out.println("Done");
-
-      } catch (IOException e) {
-          Log.e("FakeWifi","can't read json prefs",e);
-
-          e.printStackTrace();
-
-      } catch (JSONException e) {
-          Log.e("FakeWifi","can't parse json prefs",e);
-          e.printStackTrace();
-      } finally {
-
-          try {
-
-              if (br != null)
-                  br.close();
-
-              if (fr != null)
-                  fr.close();
-
-          } catch (IOException ex) {
-              Log.e("FakeWifi","can't read json prefs",ex);
-          }
-
-      }
-      return result;
-
-  }
   
   @Override
   public void handleLoadPackage(final LoadPackageParam lpp) throws Throwable
   {
       lpparam = lpp;
+      // Strict mode could be upset when reading preferences, but we need them now
       StrictMode.ThreadPolicy old = StrictMode.getThreadPolicy();
       StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder(old)
               .permitDiskReads()
               .build());
-      Log.d("FakeWifi", lpparam.packageName + " load");
+
       if (lpparam.packageName.equals(XposedMain.class.getPackage().getName())) {
           Log.d("FakeWifi", lpparam.packageName + " return");
           return;
@@ -311,20 +266,10 @@ public class XposedMain implements IXposedHookLoadPackage
       }
 
 
-
-      /*
-      String logs = "";
-      for (String key:pref.getAll().keySet()) {
-           logs+=key+";";
-      }
-      log(logs);
-      log("handle load");
-
       if (!hack_enabled())
       {
-          Log.d("FakeWifi","not enabled");
           return;
-      }*/
+      }
 
       // --------------------------
       // following android.net.NetworkInfo hooks change every NetworkInfo sent to the app.

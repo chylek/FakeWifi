@@ -2,8 +2,14 @@ package eu.chylek.adam.fakewifi;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
+
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
@@ -12,6 +18,10 @@ import java.util.regex.Pattern;
 
 public class Utils {
     public static String PREFERENCE_NAME = "pref";
+    public static String PREFERENCE_AUTHORITY = "eu.chylek.adam.fakewifi";
+    public static String DEFAULT_SSID = "FakeWifi";
+    public static String DEFAULT_BSSID = "11:22:33:44:55:66";
+    public static String DEFAULT_MAC = "AA:BB:CC:DD:EE:FF";
     final static Pattern macMatcher = Pattern.compile("([0-9A-F]{2}:){5}[0-9A-F]{2}");
 
     /**
@@ -27,7 +37,9 @@ public class Utils {
         if (prefsFile.exists()) {
             prefsFile.setReadable(true, false);
         }
+
     }
+
 
     public static boolean checkMacFormat(String s){
         String newString = s.trim().toUpperCase();

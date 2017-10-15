@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 public class TaskerEditActivity extends AppCompatActivity {
     final static String KEY_MASTER = "eu.chylek.adam.fakewifi.KEY_MASTER";
@@ -125,7 +124,7 @@ public class TaskerEditActivity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        boolean state = ((ToggleButton) findViewById(R.id.masterswitch)).isChecked();
+        boolean state = ((SwitchCompat) findViewById(R.id.masterswitch)).isChecked();
 
         final Intent resultIntent = new Intent();
 

@@ -1,5 +1,6 @@
 FakeWifi
 ==================
+**This app is no longer maintained, as I have no use for it and no way to test it. Pull requests are still welcomed, altough nobody really cared to make them yet.**
 
 Make android apps believe Wifi is connected.
 

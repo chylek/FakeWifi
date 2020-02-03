@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
@@ -367,6 +368,21 @@ public class XposedMain implements IXposedHookLoadPackage
               param.setResult(null);
           }
       });
+      hook_method("android.net.NetworkCapabilities", lpparam.classLoader, "hasCapability", new XC_MethodHook() {
+          @Override
+          protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+              param.setResult(true);
+          }
+      });
+
+      if (android.os.Build.VERSION.SDK_INT>21) {
+          hook_method("android.net.NetworkCapabilities", lpparam.classLoader, "hasTransport", new XC_MethodHook() {
+              @Override
+              protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                  param.setResult((int) param.args[0] == NetworkCapabilities.TRANSPORT_WIFI);
+              }
+          });
+      }
 
       /*
       some of the original hooks.

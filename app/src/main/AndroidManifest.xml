@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.SettingsTheme">
+        android:theme="@style/AppTheme.SettingsTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -35,7 +36,7 @@
             android:label="@string/app_name"
             android:uiOptions="splitActionBarWhenNarrow"
             android:windowSoftInputMode="adjustResize"
-            tools:ignore="ExportedActivity" >
+            tools:ignore="ExportedActivity">
 
             <!-- this Intent filter allows the plug-in to be discovered by Locale -->
             <intent-filter>
@@ -53,7 +54,7 @@
             android:name=".TaskerReceiver"
             android:exported="true"
             android:process=":background"
-            tools:ignore="ExportedReceiver" >
+            tools:ignore="ExportedReceiver">
 
             <!-- this Intent filter allows the plug-in to discovered by Locale -->
             <intent-filter>
@@ -63,7 +64,7 @@
         <provider
             android:name=".XposedPreferenceProvider"
             android:authorities="eu.chylek.adam.fakewifi"
-            android:exported="true"/>
+            android:exported="true" />
 
         <meta-data
             android:name="xposedmodule"

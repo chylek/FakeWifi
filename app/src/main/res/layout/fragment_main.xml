@@ -13,7 +13,7 @@
         android:textAppearance="?android:textAppearanceMedium" />
 
 
-    <android.support.v7.widget.SwitchCompat
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/masterswitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:text="@string/master_switch" />
 
-    <android.support.v7.widget.SwitchCompat
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/debugswitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

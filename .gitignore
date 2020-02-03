@@ -1,9 +1,11 @@
 *.iml
 .gradle
 /local.properties
+/.idea/
 .DS_Store
 /build
 /captures
 .externalNativeBuild
-.idea/
-app/libs/
+.cxx
+app/release/
+private_key.pepk

@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.SwitchCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,12 +30,12 @@ public class MainFragment extends Fragment {
         private String pname = "";
     }
 
-    SharedPreferences pref;
-    ListView app_list;        //listview with checkboxes which will contain apps
-    SwitchCompat masterSwitch;
-    SwitchCompat debugSwitch;
+    private SharedPreferences pref;
+    private ListView app_list;        //listview with checkboxes which will contain apps
+    private SwitchCompat masterSwitch;
+    private SwitchCompat debugSwitch;
 
-    ArrayList<PInfo> pinfos;    //PInfo object for each app
+    private ArrayList<PInfo> pinfos;    //PInfo object for each app
 
     public MainFragment() {
     }

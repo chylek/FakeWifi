@@ -2,7 +2,6 @@ package eu.chylek.adam.fakewifi;
 
 import android.app.ActivityThread;
 import android.content.Context;
-import android.content.pm.PackageManager;
 /*
     Copyright (C) https://github.com/AdBlocker-Reborn/AdBlocker_Reborn
 
@@ -26,11 +25,4 @@ public class ContextUtils {
         return ActivityThread.currentActivityThread().getSystemContext();
     }
 
-    public static Context getOwnContext() {
-        try {
-            return getSystemContext().createPackageContext("com.aviraxp.adblocker.continued", Context.CONTEXT_IGNORE_SECURITY);
-        } catch (PackageManager.NameNotFoundException e) {
-            return null;
-        }
-    }
 }
